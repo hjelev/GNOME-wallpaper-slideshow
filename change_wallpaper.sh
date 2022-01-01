@@ -6,5 +6,6 @@ RUID=$(who | awk 'FNR == 1 {print $1}')
 RUSER_UID=$(id -u ${RUID})
 PIC=$(ls $DIR/* | shuf -n1)
 sudo -u ${RUID} DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${RUSER_UID}/bus" gsettings set org.gnome.desktop.background picture-uri "file://$PIC"
-echo $PIC > /home/masoko/git/zorin-os-wallpaper-slideshow/change_wallpaper.log
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+echo $PIC > $SCRIPT_DIR/change_wallpaper.log
 exit
