@@ -8,5 +8,6 @@ PIC=$(ls $DIR/* | shuf -n1)
 sudo -u ${RUID} DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${RUSER_UID}/bus" gsettings set org.gnome.desktop.background picture-uri "file://$PIC"
 sudo -u ${RUID} DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${RUSER_UID}/bus" gsettings set org.gnome.desktop.background picture-uri-dark "file://$PIC"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-echo $PIC > $SCRIPT_DIR/change_wallpaper.log
+# Uncomment the following line if you wish to log the current wallpaper in a file
+#echo $PIC > $SCRIPT_DIR/change_wallpaper.log
 exit
